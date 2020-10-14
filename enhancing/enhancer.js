@@ -22,7 +22,7 @@ function fail(item) {
   } else if ( 15 <= item.enhancement < 17 ) {
     return { ...item, durability: item.durability - 10 };
   } else {
-    return { errMessage: "edge case in the fail() method!"}
+    return { errMessage: "edge case in the fail() method. Item's enhancement is not between 0 and 20"}
   }
 }
 
