@@ -52,5 +52,44 @@ describe('enhancer.js', () => {
             expect(newItem.enhancement).toBe(20)
             expect(newItem.durability).toBe(50)
         })
-    })    
+    })
+    
+    describe('fail()', () => {
+        test('if enhancement is less than 15, durability of the item is decreased by 5', () => {
+            const item = {
+                name: "mithril armor",
+                durability: 50,
+                enhancement: 5
+            }
+            
+            const newItem = enhancer.fail(item)
+
+            expect(newItem.durability).toBe(45)
+        })
+
+        test('if enhancement is greater than 15, the durability should decrease by 10', () => {
+            const item = {
+                name: "mithril armor",
+                durability: 50,
+                enhancement: 15
+            }
+            
+            const newItem = enhancer.fail(item)
+
+            expect(newItem.durability).toBe(40)
+            expect(newItem.enhancement).toBe(15)
+        })
+
+        test('if enhancement is greater than 16, the enhancement level decreases by 1', () => {
+            const item = {
+                name: "mithril armor",
+                durability: 50,
+                enhancement: 17
+            }
+            
+            const newItem = enhancer.fail(item)
+
+            expect(newItem.enhancement).toBe(16)
+        })
+    })
 });
